@@ -72,6 +72,99 @@
           "name": "Gmail account"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Lxlp5nfKQPRBKlfapkIdRRDHN2iZaWE--ik2xlWQmfs",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Lxlp5nfKQPRBKlfapkIdRRDHN2iZaWE--ik2xlWQmfs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{ $now.toISO() }}",
+            "Email Ingresado": "={{ $json.body.email }}",
+            "Motivo": "Email inválido o formato incorrecto",
+            "Datos completos": "={{ JSON.stringify($json) }}",
+            "IP Origen": "={{ $json.headers?.['x-forwarded-for'] || 'Desconocido' }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email Ingresado",
+              "displayName": "Email Ingresado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Motivo",
+              "displayName": "Motivo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Datos completos",
+              "displayName": "Datos completos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "IP Origen",
+              "displayName": "IP Origen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        320,
+        80
+      ],
+      "id": "f343ad33-35d6-42d7-bf58-a6f797a70bac",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mfnzYHLpMpIAw6oh",
+          "name": "Google Sheets account 2"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -96,7 +189,13 @@
             "index": 0
           }
         ],
-        []
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -106,7 +205,7 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "7dc888b4-5fba-4ea5-b213-9d81d0e77bdc",
+  "versionId": "0ff534bb-2afe-4f75-a81a-707330e2c120",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "cf27e0a699a34a60d46bd938ffd78a50f794f69e74b8cc2d1e79448d741af3bb"
